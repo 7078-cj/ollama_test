@@ -1,13 +1,11 @@
 # Use official Ollama image
 FROM ollama/ollama:latest
 
-# Expose Ollama default port
+# Bind to all interfaces for Render
+ENV OLLAMA_HOST=0.0.0.0
+
+# Expose port (Render uses 11434 internally)
 EXPOSE 11434
 
-# Start Ollama service and pull gemma3:4b
-RUN ollama serve & \
-    sleep 5 && \
-    ollama pull gemma3:4b
-
-# Start Ollama when container runs
-CMD ["ollama", "serve"]
+# Start server and pull lightweight model
+CMD ["sh", "-c", "ollama serve & sleep 5 && ollama pull qwen2.5:0.5b && wait"]
