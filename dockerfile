@@ -1,6 +1,8 @@
 # Use official Ollama image
 FROM ollama/ollama:latest
 
+ENV OLLAMA_HOST=0.0.0.0
+
 # Expose Ollama default port
 EXPOSE 11434
 
