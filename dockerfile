@@ -8,4 +8,4 @@ ENV OLLAMA_HOST=0.0.0.0
 EXPOSE 11434
 
 # Start server and pull lightweight model
-CMD ["sh", "-c", "ollama serve & sleep 5 && ollama pull qwen2.5:0.5b && wait"]
+CMD ollama serve & sleep 5 && ollama pull qwen2.5:0.5b && wait
